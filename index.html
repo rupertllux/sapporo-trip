@@ -451,10 +451,74 @@ section {
 }
 
 /* ===== Map ===== */
-#map {
+#map, #map-overview {
   height: 480px;
   border: 1px solid var(--line);
   filter: saturate(0.85);
+}
+
+.map-block {
+  margin-bottom: 64px;
+}
+
+.map-block:last-child {
+  margin-bottom: 0;
+}
+
+.map-subtitle {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.map-subtitle .num {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.map-subtitle .desc {
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.distance-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.dist-card {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--line);
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dist-card .dist-label {
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  letter-spacing: 0.05em;
+}
+
+.dist-card .dist-val {
+  font-size: 0.98rem;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+@media (max-width: 700px) {
+  #map, #map-overview { height: 380px; }
+  .map-subtitle { flex-direction: column; gap: 6px; }
 }
 
 .map-legend {
@@ -1398,16 +1462,51 @@ footer .divider {
 <section id="map-section">
   <div class="section-head">
     <div class="section-num">— ROUTE MAP —</div>
-    <h2 class="section-title">호텔 주변 동선</h2>
-    <p class="section-intro">호텔에서 도보 10분 이내에 식당·관광지 모두 있어 편리해요. 지도에서 위치를 확인하세요.</p>
+    <h2 class="section-title">동선 지도</h2>
+    <p class="section-intro">호텔이 삿포로 시내 정중앙에 있어 도심은 도보로, 비에이·오타루는 가이드 차량 픽업으로 이동해요. 광역과 호텔 주변, 두 단계로 확인하세요.</p>
   </div>
 
-  <div id="map"></div>
+  <!-- 광역 지도 -->
+  <div class="map-block">
+    <div class="map-subtitle">
+      <span class="num">① 광역 동선 (홋카이도 남부)</span>
+      <span class="desc">삿포로 ↔ 비에이 · 오타루 · 신치토세 공항 위치 관계</span>
+    </div>
+    <div id="map-overview"></div>
+    <div class="map-legend">
+      <div><span class="dot" style="background:#1a2332"></span>호텔 (베이스)</div>
+      <div><span class="dot" style="background:#666"></span>신치토세 공항</div>
+      <div><span class="dot" style="background:#8b6f47"></span>비에이 (6/5)</div>
+      <div><span class="dot" style="background:#4a6b8a"></span>오타루 (6/6)</div>
+    </div>
+    <div class="distance-info">
+      <div class="dist-card">
+        <span class="dist-label">HOTEL → AIRPORT</span>
+        <span class="dist-val">신치토세 · 약 47km · 차로 1시간</span>
+      </div>
+      <div class="dist-card">
+        <span class="dist-label">HOTEL → BIEI</span>
+        <span class="dist-val">비에이 · 약 140km · 차로 2.5시간</span>
+      </div>
+      <div class="dist-card">
+        <span class="dist-label">HOTEL → OTARU</span>
+        <span class="dist-val">오타루 · 약 40km · 차로 1시간</span>
+      </div>
+    </div>
+  </div>
 
-  <div class="map-legend">
-    <div><span class="dot" style="background:#1a2332"></span>비스포크 호텔</div>
-    <div><span class="dot" style="background:#b8493d"></span>식당</div>
-    <div><span class="dot" style="background:#a07e3a"></span>관광지</div>
+  <!-- 호텔 주변 지도 -->
+  <div class="map-block">
+    <div class="map-subtitle">
+      <span class="num">② 호텔 주변 (도보권)</span>
+      <span class="desc">식당·관광지 모두 호텔에서 도보 10분 이내</span>
+    </div>
+    <div id="map"></div>
+    <div class="map-legend">
+      <div><span class="dot" style="background:#1a2332"></span>비스포크 호텔</div>
+      <div><span class="dot" style="background:#b8493d"></span>식당</div>
+      <div><span class="dot" style="background:#a07e3a"></span>관광지</div>
+    </div>
   </div>
 </section>
 
@@ -1569,7 +1668,7 @@ document.querySelectorAll('.check-item input').forEach(cb => {
   });
 });
 
-// ===== Map =====
+// ===== Map (호텔 주변) =====
 const map = L.map('map', { scrollWheelZoom: false }).setView([43.0560, 141.3540], 15);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -1618,6 +1717,75 @@ const places = [
 places.forEach(p => {
   L.marker([p.lat, p.lng], { icon: makeIcon(p.color, p.label) })
     .addTo(map)
+    .bindPopup(`<b style="font-family:'Noto Serif KR',serif">${p.name}</b><br><span style="color:#666;font-size:0.85rem">${p.detail}</span>`);
+});
+
+// ===== Overview Map (광역 동선) =====
+const overviewMap = L.map('map-overview', { scrollWheelZoom: false }).setView([43.20, 141.55], 9);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© OpenStreetMap',
+  maxZoom: 19
+}).addTo(overviewMap);
+
+const makeBigIcon = (color, label, size) => L.divIcon({
+  className: 'custom-marker',
+  html: `<div style="
+    background:${color};
+    color:white;
+    width:${size}px;height:${size}px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Noto Serif KR', serif;
+    font-weight:700;
+    font-size:${Math.round(size * 0.42)}px;
+    border:2.5px solid white;
+    box-shadow:0 2px 8px rgba(0,0,0,0.35);
+  ">${label}</div>`,
+  iconSize: [size, size],
+  iconAnchor: [size/2, size/2]
+});
+
+// 동선 라인 먼저 그리기 (마커가 위에 오도록)
+// 6/5 비에이 투어 라인 (호텔 ↔ 비에이)
+L.polyline([
+  [43.0586, 141.3534],  // 호텔
+  [43.5557, 142.4815]   // 비에이 사계채 언덕
+], { color: '#8b6f47', weight: 3, dashArray: '8, 10', opacity: 0.65 }).addTo(overviewMap);
+
+// 6/6 오타루 투어 라인 (호텔 → 카무이 → 닛카 → 오타루 → 호텔)
+L.polyline([
+  [43.0586, 141.3534],   // 호텔
+  [43.3322, 140.3464],   // 카무이 미사키
+  [43.1893, 140.7714],   // 닛카 위스키 요이치
+  [43.1936, 140.9947],   // 오타루 운하
+  [43.0586, 141.3534]    // 호텔 복귀
+], { color: '#4a6b8a', weight: 3, dashArray: '8, 10', opacity: 0.65 }).addTo(overviewMap);
+
+// 공항 → 호텔 라인 (6/4 도착 · 6/7 출발)
+L.polyline([
+  [43.0586, 141.3534],   // 호텔
+  [42.7752, 141.6924]    // 신치토세 공항
+], { color: '#999', weight: 2, dashArray: '4, 8', opacity: 0.55 }).addTo(overviewMap);
+
+const overviewPlaces = [
+  { lat: 43.0586, lng: 141.3534, label: 'H', color: '#1a2332', size: 40,
+    name: '비스포크 호텔 삿포로', detail: '4박 베이스캠프<br>모든 일정 시작점' },
+  { lat: 42.7752, lng: 141.6924, label: '✈', color: '#666', size: 32,
+    name: '신치토세 공항 (CTS)', detail: '6/4 도착 · 6/7 출발<br>호텔까지 약 47km · 밴 이동 1시간' },
+  { lat: 43.5557, lng: 142.4815, label: '花', color: '#8b6f47', size: 36,
+    name: '비에이 (6/5 투어)', detail: '호텔에서 약 140km · 차로 2.5시간<br>사계채 언덕·청의호수·흰수염폭포·팜도미타' },
+  { lat: 43.1936, lng: 140.9947, label: '海', color: '#4a6b8a', size: 36,
+    name: '오타루 (6/6 투어)', detail: '호텔에서 약 40km · 차로 1시간<br>운하·사카이마치·오르골당' },
+  { lat: 43.3322, lng: 140.3464, label: '神', color: '#4a6b8a', size: 28,
+    name: '카무이 미사키 (6/6 경유)', detail: '오타루 투어 중간 경유지<br>아이누어 「신의 곶」' },
+  { lat: 43.1893, lng: 140.7714, label: 'W', color: '#4a6b8a', size: 28,
+    name: '닛카 위스키 요이치 (6/6 경유)', detail: '오타루 투어 경유지<br>1934년 다케쓰루 마사타카 설립' }
+];
+
+overviewPlaces.forEach(p => {
+  L.marker([p.lat, p.lng], { icon: makeBigIcon(p.color, p.label, p.size) })
+    .addTo(overviewMap)
     .bindPopup(`<b style="font-family:'Noto Serif KR',serif">${p.name}</b><br><span style="color:#666;font-size:0.85rem">${p.detail}</span>`);
 });
 
