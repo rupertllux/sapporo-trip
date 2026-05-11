@@ -521,6 +521,110 @@ section {
   margin-right: 6px;
 }
 
+/* ===== About Sapporo ===== */
+.about-section {
+  background: linear-gradient(180deg, rgba(26, 35, 50, 0.03), rgba(26, 35, 50, 0));
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.about-card {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--line);
+  padding: 36px 32px;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.about-card:hover { transform: translateY(-3px); }
+
+.about-card .about-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 3.2rem;
+  color: var(--accent-soft);
+  line-height: 0.9;
+  margin-bottom: 18px;
+  opacity: 0.55;
+  display: block;
+}
+
+.about-card h3 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.about-card .jp-sub {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 0.78rem;
+  color: var(--accent);
+  letter-spacing: 0.25em;
+  margin-bottom: 18px;
+}
+
+.about-card p {
+  font-size: 0.95rem;
+  color: var(--body);
+  line-height: 1.8;
+}
+
+.about-card p + p { margin-top: 10px; }
+
+@media (max-width: 700px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .about-card { padding: 28px 24px; }
+}
+
+/* ===== Knowledge Box (역사·문화 배경) ===== */
+.knowledge-box {
+  background: rgba(26, 35, 50, 0.045);
+  padding: 18px 22px;
+  margin-top: 14px;
+  border-left: 3px solid var(--ink-soft);
+  font-size: 0.9rem;
+  position: relative;
+}
+
+.knowledge-box .label {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.knowledge-box .label::before {
+  content: '◇';
+  color: var(--gold);
+  font-size: 0.9rem;
+}
+
+.knowledge-box .label .jp {
+  font-size: 0.7rem;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  font-weight: 400;
+}
+
+.knowledge-box p {
+  color: var(--body);
+  line-height: 1.75;
+  margin: 0;
+}
+
+.knowledge-box p + p { margin-top: 8px; }
+
 /* ===== Checklist ===== */
 .checklist-section {
   background: linear-gradient(180deg, rgba(212, 163, 115, 0.06), rgba(212, 163, 115, 0));
@@ -729,6 +833,7 @@ footer .divider {
 <!-- ===== ANCHOR NAV ===== -->
 <nav class="anchor-nav">
   <ul>
+    <li><a href="#about-sapporo">삿포로</a></li>
     <li><a href="#overview">한눈에</a></li>
     <li><a href="#schedule">일정</a></li>
     <li><a href="#map-section">동선</a></li>
@@ -736,6 +841,51 @@ footer .divider {
     <li><a href="#checklist">준비물</a></li>
   </ul>
 </nav>
+
+<!-- ===== ABOUT SAPPORO ===== -->
+<section id="about-sapporo" class="about-section">
+  <div class="section-head">
+    <div class="section-num">— ABOUT SAPPORO —</div>
+    <h2 class="section-title">삿포로를 알고 가요</h2>
+    <p class="section-intro">도쿄·교토와는 결이 다른 도시예요. 일본 본토 천 년의 전통이 아니라, 150년 전 맨바닥에서 시작한 개척의 역사가 흐르는 곳. 그래서 더 특별합니다.</p>
+  </div>
+
+  <div class="about-grid">
+
+    <div class="about-card">
+      <div class="about-num">01</div>
+      <h3>아이누의 땅에서 출발</h3>
+      <div class="jp-sub">AINU MOSIR · 아이누 모시리</div>
+      <p>홋카이도는 본래 일본인이 아닌 <b>아이누족</b>의 땅이었어요. 삿포로라는 이름도 아이누어 '사트 포로 페트(말라가는 큰 강)'에서 왔고, 카무이 미사키·토마코마이·왓카나이 등 홋카이도 지명의 절반 이상이 아이누어에서 유래해요.</p>
+      <p>일본 정부가 아이누를 공식적으로 '원주민'으로 인정한 건 놀랍게도 <b>2008년</b>이에요. 이번 여행 곳곳에서 그들의 흔적을 만나게 될 거예요.</p>
+    </div>
+
+    <div class="about-card">
+      <div class="about-num">02</div>
+      <h3>150년의 개척 도시</h3>
+      <div class="jp-sub">開拓使 · 카이타쿠시</div>
+      <p>1869년 메이지 정부가 <b>홋카이도 개척사(開拓使)</b>를 설치하면서 본격적인 도시 개발이 시작됐어요. 거의 빈 땅 위에 미국 식민도시를 본떠 만든 <b>격자형 도로망</b>이 특징이라, 주소도 '북1조 서3정목' 같은 좌표식이에요.</p>
+      <p>1876년에는 미국에서 <b>클라크 박사</b>를 초빙해 삿포로 농학교(현 홋카이도대학)를 열었어요. "Boys, be ambitious!" 이 명언이 나온 곳이 바로 여기예요. 그래서 도심 곳곳에 빨간 벽돌 서양식 건물이 남아있어요.</p>
+    </div>
+
+    <div class="about-card">
+      <div class="about-num">03</div>
+      <h3>일본 최북단 미식의 수도</h3>
+      <div class="jp-sub">美味の北海道 · 비미노 홋카이도</div>
+      <p>홋카이도는 차가운 바다와 광활한 농지를 모두 가진 곳이라 일본에서 <b>해산물·유제품·맥주의 최고급 산지</b>예요. 도쿄나 오사카에서도 '홋카이도산'은 프리미엄 표시.</p>
+      <p>특히 삿포로는 <b>미소라멘 발상지(1955년경)</b>이자, <b>삿포로 맥주(1876년 양조 시작)</b>의 본사, 그리고 게요리·우니·이쿠라·징기스칸·수프카레의 본고장이에요. 이번 여행에서 4박 동안 카이센동 → 게 → 양고기 → 마지막 호텔 카이센동까지 풀코스로 맛볼 거예요.</p>
+    </div>
+
+    <div class="about-card">
+      <div class="about-num">04</div>
+      <h3>이번 여행의 키워드</h3>
+      <div class="jp-sub">三 都 物 語 · 세 도시 이야기</div>
+      <p><b>삿포로(도심) · 비에이(꽃과 자연) · 오타루(운하와 옛 무역항)</b> 홋카이도의 세 얼굴을 모두 보는 구성이에요.</p>
+      <p>6월 초는 일본 본토가 장마에 접어드는 시기지만, <b>홋카이도는 장마전선이 닿지 않아</b> 1년 중 가장 쾌적한 시기예요. 라벤더는 6월 말부터지만, 그 직전 색색의 꽃들이 비에이 언덕을 수놓고 있을 거예요.</p>
+    </div>
+
+  </div>
+</section>
 
 <!-- ===== OVERVIEW ===== -->
 <section id="overview">
@@ -842,6 +992,12 @@ footer .divider {
                   <li><b>타누키코지 상점가</b> — 호텔 바로 옆 아케이드, 비 와도 OK</li>
                 </ul>
               </div>
+              <div class="knowledge-box">
+                <div class="label">알고 가요 <span class="jp">豆 知 識</span></div>
+                <p><b>오도리 공원</b>은 처음부터 공원이 아니었어요. 1871년 개척 초기, 목조 도시의 화재 확산을 막는 <b>방화대(防火帯)</b>로 105m 폭의 빈 띠를 만든 게 시작이에요.</p>
+                <p><b>시계탑</b>은 클라크 박사가 세운 삿포로 농학교의 <b>연무장(체육관)</b>이었어요. 일본에서 가장 오래된 미국식 시계탑 중 하나로, '소년이여 야망을 가져라'라는 명언이 탄생한 무대이기도 합니다.</p>
+                <p><b>타누키코지</b>는 '너구리길'이라는 뜻인데, 1869년 개척 초기부터 형성된 <b>삿포로에서 가장 오래된 상점가</b>예요. 약 1km의 아케이드 거리.</p>
+              </div>
             </div>
           </div>
 
@@ -858,6 +1014,11 @@ footer .divider {
                   <li>대표 메뉴: 모듬 카이센동 (우니·이쿠라·게·가리비·새우 등)</li>
                   <li>웨이팅 있을 수 있음 — 도착하면 이름 적고 근처 산책 추천</li>
                 </ul>
+              </div>
+              <div class="knowledge-box">
+                <div class="label">알고 가요 <span class="jp">豆 知 識</span></div>
+                <p>홋카이도는 일본 최북단의 차가운 바다(오호츠크해·동해·태평양 3면이 닿음)에 둘러싸여 있어 <b>일본 최고급 해산물 산지</b>로 평가받아요. 도쿄·오사카에서도 메뉴에 '홋카이도산'이라고 쓰면 가격이 올라갑니다.</p>
+                <p>특히 <b>우니(성게)·이쿠라(연어알)·호타테(가리비)·아마에비(단새우)</b>가 일본 내 톱 클래스. 첫날 저녁에 이걸 한꺼번에 맛볼 수 있는 게 카이센동의 매력이에요.</p>
               </div>
             </div>
           </div>
@@ -932,6 +1093,11 @@ footer .divider {
               <div class="name">청의호수 (青い池)</div>
               <div class="desc">애플 맥북 배경 화면으로 유명한 신비로운 푸른빛 호수. 알루미늄 성분이 만들어내는 색</div>
               <div><span class="tag">30분</span></div>
+              <div class="knowledge-box">
+                <div class="label">알고 가요 <span class="jp">豆 知 識</span></div>
+                <p>이 호수는 사실 <b>자연이 만든 게 아니라 우연의 부산물</b>이에요. 1988년 토카치다케 화산이 폭발한 뒤, 토사가 마을로 흘러내리는 걸 막으려고 비에이가와 강에 사방댐을 만들었는데, 그 뒤로 물이 고이며 우연히 호수가 만들어졌어요.</p>
+                <p>물에 녹아있는 <b>알루미늄 콜로이드</b>가 빛의 짧은 파장(파란색)을 산란시켜서 이 신비로운 청록빛이 나옵니다. Apple이 macOS 배경화면으로 쓰면서 세계적으로 유명해졌어요.</p>
+              </div>
             </div>
           </div>
 
@@ -941,6 +1107,10 @@ footer .divider {
               <div class="name">흰수염 폭포 (白ひげの滝)</div>
               <div class="desc">절벽에서 흩날리듯 흘러내리는 폭포. 청의호수와 같은 물줄기</div>
               <div><span class="tag">30분</span></div>
+              <div class="knowledge-box">
+                <div class="label">알고 가요 <span class="jp">豆 知 識</span></div>
+                <p>청의호수와 <b>같은 수원</b>에서 나오는 폭포예요. 지하수가 절벽의 균열 사이로 흘러나오며 마치 흰 수염이 흩날리듯 떨어진다고 해서 '시라히게(白ひげ, 흰 수염)의 폭포'라는 이름이 붙었어요.</p>
+              </div>
             </div>
           </div>
 
@@ -950,6 +1120,11 @@ footer .divider {
               <div class="name">패치워크 로드 · 팜도미타</div>
               <div class="desc">다양한 농작물로 누빈 듯한 패치워크 풍경 → 팜도미타 꽃밭. 6월 초는 라벤더 직전이지만 다른 꽃들 풍성</div>
               <div><span class="tag">각 30분</span></div>
+              <div class="knowledge-box">
+                <div class="label">알고 가요 <span class="jp">豆 知 識</span></div>
+                <p><b>패치워크 풍경</b>은 일부러 디자인한 게 아니에요. 비에이의 농가들이 매년 다른 작물(밀·옥수수·감자·콩 등)을 돌려 심으면서 자연스럽게 만들어진 모자이크예요. 1970년대부터 광고·드라마 배경으로 등장하며 일본 전역에 알려졌어요.</p>
+                <p><b>팜도미타</b>는 1903년부터 운영된 라벤더 농장이에요. 라벤더는 6월 말~7월에 만개하지만, 6월 초에도 양귀비·튤립·물망초 등 다양한 꽃이 다채롭게 피어 있을 거예요.</p>
+              </div>
             </div>
           </div>
 
@@ -975,6 +1150,12 @@ footer .divider {
                   <li><b>토로타쿠</b> — 다진 참치 뱃살에 단무지를 곁들인 인기 메뉴</li>
                 </ul>
                 <div class="warn">예약 필수. 호텔 컨시어지에 부탁하거나 미리 인스타 DM/Tabelog로 예약하기. 전화: +81 11-600-0508</div>
+              </div>
+              <div class="knowledge-box">
+                <div class="label">알고 가요 <span class="jp">豆 知 識</span></div>
+                <p>홋카이도는 일본 <b>3대 게의 본고장</b>이에요:</p>
+                <p>① <b>타라바가니(킹크랩)</b> — 가장 크고 다리살이 풍성<br>② <b>즈와이가니(대게)</b> — 부드럽고 단맛이 강함<br>③ <b>케가니(털게)</b> — 일본 본토에선 거의 못 보는 홋카이도 특산. 내장(게 미소)이 진한 별미</p>
+                <p>게 미소(게 내장)를 풀어 만든 국물에 게살을 살짝 데쳐 먹는 <b>게 샤브샤브</b>는 홋카이도에서만 제대로 맛볼 수 있는 요리예요.</p>
               </div>
             </div>
           </div>
@@ -1031,6 +1212,11 @@ footer .divider {
               <div class="name">카무이 미사키 곶 (神威岬)</div>
               <div class="desc">동해를 향해 뻗은 절벽 곶. 산책로를 따라 바다 절경 감상</div>
               <div><span class="tag">60분</span></div>
+              <div class="knowledge-box">
+                <div class="label">알고 가요 <span class="jp">豆 知 識</span></div>
+                <p><b>'카무이(神威)'는 아이누어로 '신'</b>이라는 뜻이에요. 아이누족이 신성하게 여긴 곶으로, 옛날에는 여자가 들어가면 배가 침몰한다는 전설 때문에 여인의 출입이 금지됐던 곳이라고 합니다.</p>
+                <p>오늘날 산책로 입구에 '<b>여인금제(女人禁制)의 문</b>'이라는 옛 흔적이 남아있어요. 지금은 누구나 들어갈 수 있고, 절벽 끝까지 약 20분 산책할 수 있습니다.</p>
+              </div>
             </div>
           </div>
 
@@ -1046,6 +1232,12 @@ footer .divider {
                   <li>다케쓰루가 산토리 야마자키 증류소에서 10년 일한 뒤 1934년 독립해 세움. 일본 위스키 두 거장 중 한 명</li>
                   <li>유료 시음 코너 있음 (스스로 비용 부담 시)</li>
                 </ul>
+              </div>
+              <div class="knowledge-box">
+                <div class="label">알고 가요 <span class="jp">豆 知 識</span></div>
+                <p><b>다케쓰루 마사타카(1894~1979)</b>는 일본 최초로 스코틀랜드에서 위스키 양조를 정식으로 배운 사람이에요. 1918년 글래스고에 유학, 1920년 스코틀랜드 여성 리타와 결혼해 일본으로 돌아왔어요.</p>
+                <p>처음엔 산토리 야마자키 증류소(오사카 인근)에서 10년 일했지만, 산토리는 <b>가벼운 일본인 입맛에 맞춘 위스키</b>를 원했고, 다케쓰루는 <b>본격 스코틀랜드식 진한 위스키</b>를 만들고 싶어 의견이 갈렸어요. 그래서 1934년 독립해, 스코틀랜드 하이랜드와 가장 비슷한 차가운 해풍·습한 기후를 가진 <b>요이치</b>에 자신의 증류소를 세웠어요.</p>
+                <p>오사카에 산토리의 글리코 간판이 있다면, 삿포로 스스키노 거리에는 <b>닛카 위스키의 거대한 간판</b>이 있어요. 두 위스키 거장의 자존심 대결인 셈이에요.</p>
               </div>
             </div>
           </div>
@@ -1065,6 +1257,11 @@ footer .divider {
               <div class="name">사카이마치 상점가 · 오르골당</div>
               <div class="desc">옛 창고를 개조한 메이지 시대 분위기 거리. 오타루 오르골당은 일본 최대 오르골 매장 (5,000여 종)</div>
               <div><span class="tag">80분</span></div>
+              <div class="knowledge-box">
+                <div class="label">알고 가요 <span class="jp">豆 知 識</span></div>
+                <p>오타루는 1869년부터 <b>청어잡이로 번성한 항구도시</b>였어요. 메이지·다이쇼 시대에는 '북쪽의 월스트리트'라 불릴 만큼 은행과 무역상이 모인 금융 중심지였습니다.</p>
+                <p>사카이마치 거리에 보이는 <b>석조 창고와 르네상스 양식 건물들</b>이 바로 그 시절의 잔재예요. 오타루 오르골당은 옛 마구 창고(말 안장·도구 보관소)를 개조한 건물입니다.</p>
+              </div>
             </div>
           </div>
 
@@ -1074,6 +1271,11 @@ footer .divider {
               <div class="name">오타루 운하</div>
               <div class="desc">옛 무역항의 운치가 남은 1,140m 운하. 가스등이 늘어선 산책로</div>
               <div><span class="tag">20분</span></div>
+              <div class="knowledge-box">
+                <div class="label">알고 가요 <span class="jp">豆 知 識</span></div>
+                <p>1923년에 완공된 <b>인공 운하</b>예요. 큰 화물선이 항구에 못 들어와서 거룻배(작은 배)로 짐을 옮기는 데 썼어요.</p>
+                <p>1960년대 트럭 운송이 발달하며 매립될 위기에 처했지만, <b>1986년 시민들의 보존 운동 끝에 절반만 매립</b>하고 나머지는 산책로로 만들어 지금 모습이 됐어요. 일본에서 보기 드문 '시민이 지킨 풍경'의 사례입니다.</p>
+              </div>
             </div>
           </div>
 
@@ -1083,6 +1285,11 @@ footer .divider {
               <div class="name">시로이 코이비토 파크</div>
               <div class="desc">홋카이도 대표 과자 '시로이 코이비토'의 테마파크. 유럽풍 정원, 초콜릿 박물관 (무료존만)</div>
               <div><span class="tag">30분</span></div>
+              <div class="knowledge-box">
+                <div class="label">알고 가요 <span class="jp">豆 知 識</span></div>
+                <p>'시로이 코이비토'는 <b>'흰 연인'</b>이라는 뜻이에요. 1976년 이시야 제과가 출시한 화이트 초콜릿을 랑그드샤 쿠키 사이에 끼운 과자.</p>
+                <p>이름의 유래는 회장이 스키를 마치고 내려오다 눈송이가 흩날리는 걸 보고 "<b>흰 연인들이 내려오네</b>"라고 한 말에서 왔다고 해요. 지금은 홋카이도 기념품 1위로, 일본인이 홋카이도에 다녀오면 가장 많이 사 가는 선물입니다.</p>
+              </div>
             </div>
           </div>
 
@@ -1107,6 +1314,12 @@ footer .divider {
                   <li>옷에 양고기·연기 냄새가 배니까 좋은 옷은 피하기</li>
                   <li>11:30~02:00 영업, 워크인 가능</li>
                 </ul>
+              </div>
+              <div class="knowledge-box">
+                <div class="label">알고 가요 <span class="jp">豆 知 識</span></div>
+                <p><b>'징기스칸(成吉思汗)'이라는 이름</b>은 칭기즈칸 군대의 투구를 본뜬 돔 모양 무쇠팬에서 왔다는 설이 가장 유력해요.</p>
+                <p>다이쇼 시대(1910년대) 일본 정부가 군복용 양털·가죽 산업을 키우려 <b>홋카이도에 양 사육을 적극 장려</b>했어요. 그 결과 양고기가 흔해졌고, 만주에서 들여온 양고기 요리 문화와 결합해 홋카이도 명물로 자리 잡았습니다.</p>
+                <p>이번 여행에서 게(해산물) → 양고기까지 맛보면, <b>홋카이도 음식의 두 축</b>을 다 경험하는 셈이에요.</p>
               </div>
             </div>
           </div>
